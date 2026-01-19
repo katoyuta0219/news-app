@@ -2,7 +2,7 @@ FROM node:22
 WORKDIR /workdir
 
 COPY . .
-WORKDIR /workdir/next-app
+WORKDIR /workdir/next-app/src
 RUN npm install
 CMD ["npm", "run", "dev"]
-EXPOSE 3008
+EXPOSE 3000
