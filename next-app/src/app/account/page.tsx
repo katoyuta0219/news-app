@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import GenreSelector from '@/components/account/genres';
 import LocationSelector from '@/components/account/location';
@@ -31,7 +30,7 @@ export default function RegistrationPage() {
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        setFormData((prev) => ({
+        setFormData((prev: RegistrationFormData) => ({
             ...prev,
             [name]: value,
         }));
@@ -98,28 +97,28 @@ export default function RegistrationPage() {
                         <LocationSelector
                             location={formData.location}
                             onChange={(location) =>
-                                setFormData((prev) => ({ ...prev, location }))
+                                setFormData((prev: RegistrationFormData) => ({ ...prev, location }))
                             }
                         />
 
                         <AgeSelector
                             age={formData.age}
                             onChange={(age) =>
-                                setFormData((prev) => ({ ...prev, age }))
+                                setFormData((prev: RegistrationFormData) => ({ ...prev, age }))
                             }
                         />
 
                         <PositionSelector
                             position={formData.position}
                             onChange={(position) =>
-                                setFormData((prev) => ({ ...prev, position }))
+                                setFormData((prev: RegistrationFormData) => ({ ...prev, position }))
                             }
                         />
 
                         <GenreSelector
                             selectedGenres={formData.genres}
                             onChange={(genres) =>
-                                setFormData((prev) => ({ ...prev, genres }))
+                                setFormData((prev: RegistrationFormData) => ({ ...prev, genres }))
                             }
                         />
 
