@@ -12,11 +12,9 @@ export default function Onboarding1({ onNext }: Props) {
                 
                 {/* ヘッダー：ロゴとスキップ */}
                 <div className="w-full flex justify-between items-center mb-12">
-                    {/* 左側のスペース（ロゴを中央に寄せるため） */}
                     <div className="w-10"></div>
                     
-                    {/* honnoriロゴ：Lemonフォント適用 */}
-                    <h1 className="text-4xl text-[#EBA388] font-[family-name:var(--font-lemon)] italic">
+                    <h1 className="text-4xl text-[#EBA388] font-[family-name:var(--font-lemon)]">
                         honnori
                     </h1>
                     
