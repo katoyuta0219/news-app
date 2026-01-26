@@ -1,41 +1,34 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import Loading from '@/components/ui/Loading';
 import GenreSelector from '@/components/account/genres';
 import LocationSelector from '@/components/account/location';
 import AgeSelector from '@/components/account/age';
 import PositionSelector from '@/components/account/position';
 
-
 interface RegistrationFormData {
-    age: string;      // 年齢
-    location: string; // 居住地
-    position: string; // 立場
-    genres: string[]; // 好きなジャンル
+    age: string;
+    location: string;
+    position: string;
+    genres: string[];
 }
 
-export default function RegistrationPage() {
+export default function AccountPage() {
     const router = useRouter();
     const [formData, setFormData] = useState<RegistrationFormData>({
-        age: '',      // 年齢
-        location: '', // 居住地
-        position: '', // 立場
-        genres: [],   // 好きなジャンル
+        age: '',
+        location: '',
+        position: '',
+        genres: [],
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
-    };
+    const isFormValid = formData.age && formData.location && formData.position && formData.genres.length > 0;
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -44,8 +37,7 @@ export default function RegistrationPage() {
         setSuccessMessage('');
 
         try {
-            // Validate form data
-            if (!formData.age || !formData.location || !formData.position) {
+            if (!isFormValid) {
                 throw new Error('すべてのフィールドを入力してください');
             }
 
@@ -53,17 +45,8 @@ export default function RegistrationPage() {
             localStorage.setItem('userProfile', JSON.stringify(formData));
             setSuccessMessage('アカウント登録が完了しました！');
 
-            // Reset form
-            setFormData({
-                age: '',
-                location: '',
-                position: '',
-                genres: [],
-            });
-
-            // Redirect after 2 seconds
             setTimeout(() => {
-                router.push('/home'); // Assuming dashboard or some other page
+                router.push('/home');
             }, 2000);
         } catch (error) {
             setErrorMessage(
@@ -73,6 +56,10 @@ export default function RegistrationPage() {
             setIsSubmitting(false);
         }
     };
+
+    if (isSubmitting) {
+        return <Loading />;
+    }
 
     return (
         <div className="flex min-h-screen bg-gray-50 dark:bg-black">
@@ -122,14 +109,13 @@ export default function RegistrationPage() {
                                 setFormData((prev) => ({ ...prev, genres }))
                             }
                         />
-
                     </div>
 
-                    <div className="mt-8 flex gap-4">
+                    <div className="mt-8">
                         <button
                             type="submit"
-                            disabled={isSubmitting}
-                            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                            disabled={!isFormValid || isSubmitting}
+                            className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             {isSubmitting ? '登録中...' : 'はじめる'}
                         </button>
