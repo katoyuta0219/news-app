@@ -1,8 +1,64 @@
+version: '3.9'
+
 services:
-  app:
-    build: ./
-    volumes:
-      - .:/workdir
-      - /workdir/next-app/node_modules
+  # 開発環境サービス
+  app-dev:
+    container_name: news-app-dev
+    build:
+      context: .
+      dockerfile: dockerfile
+      target: development
+    image: news-app:dev
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_API_URL=http://localhost:3000
     ports:
-      - 3000:3000
+      - "3000:3000"
+    volumes:
+      - ./next-app:/app
+      - /app/node_modules
+      - /app/.next
+    networks:
+      - news-app-network
+    command: npm run dev
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    stdin_open: true
+    tty: true
+
+  # 本番環境サービス
+  app-prod:
+    container_name: news-app-prod
+    build:
+      context: .
+      dockerfile: dockerfile
+      target: production
+    image: news-app:prod
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=http://localhost:3000
+    ports:
+      - "3001:3000"
+    networks:
+      - news-app-network
+    command: npm start
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    profiles:
+      - prod
+
+networks:
+  news-app-network:
+    driver: bridge
+
+volumes:
+  node_modules:
