@@ -1,22 +1,34 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Loading from '@/components/ui/Loading';
 
 export default function Page() {
   const router = useRouter();
+  const [countdown, setCountdown] = useState(3);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       router.push('/onboarding');
     }, 3000);
 
-    return () => clearTimeout(timer);
+    const countdownInterval = setInterval(() => {
+      setCountdown((prev) => Math.max(prev - 1, 0));
+    }, 1000);
+
+    return () => {
+      clearTimeout(timer);
+      clearInterval(countdownInterval);
+    };
   }, [router]);
 
   return (
-    <main>
-      <p>３秒後にオンポーティングページへ移行します</p>
+    <main className="flex flex-col items-center justify-center h-screen">
+      <Loading />
+      <p className="mt-4">
+        {countdown}秒後にオンボーディングページへ移行します
+      </p>
     </main>
   );
 }

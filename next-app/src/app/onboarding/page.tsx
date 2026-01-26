@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { useRouter } from 'next/navigation';
+import Loading from '@/components/ui/Loading';
 import Onboarding1 from '@/components/onboarding/onboarding1';
 import Onboarding2 from '@/components/onboarding/onboarding2';
 import Onboarding3 from '@/components/onboarding/onboarding3';
@@ -18,11 +19,30 @@ export default function OnboardingPage() {
     };
 
     return (
-        <div>
-            <p>Step {step} / 3</p>
-            {step === 1 && <Onboarding1 onNext={nextStep} />}
-            {step === 2 && <Onboarding2 onNext={nextStep} onBack={prevStep} />}
-            {step === 3 && <Onboarding3 onFinish={finish} onBack={prevStep} />}
-        </div>
+        <Suspense fallback={<Loading />}>
+            <div className="flex flex-col min-h-screen items-center justify-center">
+                <div className="w-full max-w-md">
+                    <div className="mb-6 text-center">
+                        <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                            ステップ {step} / 3
+                        </p>
+                        <div className="mt-2 flex gap-2 justify-center">
+                            {[1, 2, 3].map((i) => (
+                                <div
+                                    key={i}
+                                    className={`h-2 w-8 rounded-full transition-colors ${
+                                        i <= step ? 'bg-blue-600' : 'bg-gray-300 dark:bg-gray-700'
+                                    }`}
+                                />
+                            ))}
+                        </div>
+                    </div>
+
+                    {step === 1 && <Onboarding1 onNext={nextStep} />}
+                    {step === 2 && <Onboarding2 onNext={nextStep} onBack={prevStep} />}
+                    {step === 3 && <Onboarding3 onFinish={finish} onBack={prevStep} />}
+                </div>
+            </div>
+        </Suspense>
     );
 }
