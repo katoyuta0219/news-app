@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+//ロゴfont　{lemon}
+import { Zen_Maru_Gothic,Lemon } from 'next/font/google';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -10,6 +12,21 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+
+//font-lemon
+const lemon = Lemon({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-lemon',
+});
+
+//Zen_Maru_Gothic
+const zenMaruGothic = Zen_Maru_Gothic({
+  weight: ["400", "500", "700", "900"],
+  subsets: ["latin"],
+  variable: "--font-zen-maru",
 });
 
 export const metadata: Metadata = {
@@ -25,10 +42,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${lemon.variable} ${zenMaruGothic.variable} antialiased`}
       >
         {children}
       </body>
     </html>
   );
 }
+
+
+
+
