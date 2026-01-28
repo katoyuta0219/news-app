@@ -3,18 +3,20 @@
 import { useRouter } from "next/navigation";
 //iconの引用元（仮）
 //figmaの使うかこれ使うか
-//import { Coffee, MapPin, Clover } from "lucide-react";
+import { LucideIcon, MapPin, Clover } from "lucide-react";
 
 interface Props {
     id: string;             //例))
     name: string;           //カフェ
     location: string;       //名古屋からの距離
     description: string;    //名古屋に新しくスタバが、できました
-    category: string[];         //名古屋、学生
+    category: string[];     //名古屋、学生
     imageUrl: string;
+    Icon?: LucideIcon;
+    iconColor?: string;
 }
 
-export default function NewsCard({ id, name, location, description, category, imageUrl }: Props) {
+export default function NewsCard({ id, name, location, description, category, imageUrl, Icon: IconComponent, iconColor = "#D2977C" }: Props) {
     const router = useRouter();
 
     return (
@@ -26,22 +28,22 @@ export default function NewsCard({ id, name, location, description, category, im
             <div>
                 <div className="flex items-center gap-4 mb-1">
                     <div className="flex items-center gap-1 text-[#D2977C]">
-                        {/* <Coffee size={18} /> */}
+                        {IconComponent && <IconComponent size={18} color={iconColor} />}
                         <span className="text-black font-[family-name:var(--font-zen-maru)]">{name}</span>
                     </div>
                     <div className="flex items-center gap-1 text-[#D9D9D9] text-xs font-[family-name:var(--font-zen-maru)]">
-                        {/* <MapPin size={14} /> */}
+                        <MapPin size={14} /> 
                         <span>{location}</span>
                     </div>
                 </div>
                 {/* タイトル */}
-                <h2 className="font-medium text-base font-[family-name:var(--font-zen-maru)]">
+                <h2 className="font-medium text-black text-base font-[family-name:var(--font-zen-maru)]">
                     {description}
                 </h2>
 
                 {/* タグ */}
                 <div className="inline-flex items-center gap-1 px-4 py-1.5 mt-2 rounded-full border border-[#76B473] text-[#76B473] font-medium text-sm font-[family-name:var(--font-zen-maru)]">
-                        {/* <Clover size={16} /> */}
+                        <Clover size={16} />
                         <span className="font-bold text-xs">{category}</span>
                 </div>
             </div>
