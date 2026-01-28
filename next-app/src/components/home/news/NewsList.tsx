@@ -4,6 +4,7 @@ import NewsCard from './NewsCard';
 interface News {
   id: string;
   name: string;
+  location: string;
   description: string;
   category: string;
   date: string;
@@ -30,14 +31,16 @@ export default function NewsList({ category = '全て' }: NewsListProps) {
         const dummyNews: News[] = [
           {
             id: '1',
-            name: 'サンプル記事1',
-            description: 'これはサンプルの記事です。',
+            name: 'カフェ',
+            location: '名古屋駅から徒歩10分',
+            description: '名古屋駅に、新しくスタバができました。',
             category: 'テクノロジー',
             date: new Date().toISOString(),
           },
           {
             id: '2',
             name: 'サンプル記事2',
+            location:'名古屋駅から徒歩10分',
             description: 'これも別のサンプル記事です。',
             category: 'ビジネス',
             date: new Date().toISOString(),
@@ -74,8 +77,10 @@ export default function NewsList({ category = '全て' }: NewsListProps) {
         <NewsCard
           key={news.id}
           id={news.id}
+          location={news.location}
           name={news.name}
           description={news.description}
+          category={news.category}
         />
       ))}
     </div>
