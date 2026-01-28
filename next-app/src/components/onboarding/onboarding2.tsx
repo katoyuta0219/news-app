@@ -32,12 +32,12 @@ export default function Onboarding2({ onNext, onBack }: Props) {
                 {/* フィルタリングのイラストエリア（仮） */}
                 <div className="flex-1 flex items-center justify-center w-full mb-8">
                     <div className="relative w-full max-w-[280px] aspect-square flex flex-col items-center justify-center">
-                        {/* 画像を配置する予定 */}
-                        <div className="text-6xl mb-2">⚡️🌋🚀</div>
-                        <div className="w-full h-32 bg-gradient-to-b from-red-500 via-yellow-400 to-green-500 opacity-80 rounded-lg shadow-lg flex items-center justify-center text-white font-bold">
-                            FILTER
-                        </div>
-                        <div className="text-4xl mt-4">🍀😊✨</div>
+                        {/* 画像を配置 */}
+                        <img
+                            src="/filter.png"
+                            alt="filter"
+                            className=""
+                         />
                     </div>
                 </div>
 
