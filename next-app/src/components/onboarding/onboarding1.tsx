@@ -7,10 +7,8 @@ type Props = {
 export default function Onboarding1({ onNext }: Props) {
     return (
        <div className="flex justify-center min-h-screen bg-[#FFF9F3]">
-            {/* iPhoneサイズ固定のコンテナ */}
             <div className="w-full max-w-[393px] min-h-screen flex flex-col items-center px-8 py-12 relative shadow-sm">
                 
-                {/* ヘッダー：ロゴとスキップ */}
                 <div className="w-full flex justify-between items-center mb-12">
                     <div className="w-10"></div>
                     
@@ -34,10 +32,16 @@ export default function Onboarding1({ onNext }: Props) {
                     </p>
                 </div>
 
-                <div className="relative w-64 h-64 mb-16 flex items-center justify-center">
+                <div className="relative w-72 h-72 mb-16 flex items-center justify-center">
                     <div className="text-8xl">🌍</div>
                     {/* ハートとかの装飾 */}
-                    <div className="absolute inset-0 border-2 border-dashed border-pink-200 rounded-full animate-[spin_20s_linear_infinite]"></div>
+                    <div className="absolute inset-0 rounded-full animate-[spin_20s_linear_infinite]">
+                        <img
+                            src="/heart_group.png"
+                            alt="Heart group illustration" 
+                            className="w-full h-full object-contain"
+                        />
+                    </div>
                 </div>
 
                 <div className="mt-auto w-full flex flex-col items-center gap-8">

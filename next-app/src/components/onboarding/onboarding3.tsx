@@ -32,8 +32,12 @@ export default function Onboarding3({ onFinish, onBack }: Props) {
                 <div className="flex-1 flex items-center justify-center w-full mb-8">
                     <div className="relative w-full max-w-[300px] aspect-square flex flex-col items-center justify-center">
                         {/* マップ画像を配置する予定 */}
-                        <div className="w-full h-full bg-green-50 rounded-2xl border-4 border-white shadow-lg flex items-center justify-center overflow-hidden">
-                            <span className="text-8xl">📍</span>
+                        <div className="w-full h-full rounded-2xl flex items-center justify-center overflow-hidden">
+                            <img
+                                src="/map.png"
+                                alt='onbording_map'
+                                className=""
+                            />
                         </div>
                     </div>
                 </div>
