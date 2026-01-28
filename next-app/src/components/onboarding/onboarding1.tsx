@@ -33,9 +33,15 @@ export default function Onboarding1({ onNext }: Props) {
                 </div>
 
                 <div className="relative w-72 h-72 mb-16 flex items-center justify-center">
-                    <div className="text-8xl">🌍</div>
+                    <div className="text-8xl">
+                        <img
+                            src="/famicons_earth-sharp.png"
+                            alt="Heart group illustration" 
+                            className="w-full h-full object-contain"
+                        />
+                    </div>
                     {/* ハートとかの装飾 */}
-                    <div className="absolute inset-0 rounded-full animate-[spin_20s_linear_infinite]">
+                    <div className="absolute inset-0 rounded-full"> {/* animate-[spin_20s_linear_infinite] */}
                         <img
                             src="/heart_group.png"
                             alt="Heart group illustration" 
