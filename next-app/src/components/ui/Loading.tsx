@@ -1,32 +1,30 @@
+
 export default function Loading() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-[393px] h-screen bg-[#FFF7ED] flex flex-col items-center justify-center shadow-2xl">
+    // 外枠：画面全体の背景色と中央寄せ
+    <div className="flex items-center h-full justify-center min-h-screen bg-[#FFF7ED] overflow-hidden relative"> 
+
+    <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes reveal-right {
+          0% { transform: translateX(0%); }
+          100% { transform: translateX(101%); }
+        }
+        .animate-reveal {
+          animation: reveal-right 2.5s ease-in-out forwards;
+        }
+      `}} />
+      
+      {/* メイン：幅を393pxに固定 */}
+      <div className="w-[393px] h-screen bg-[#FFF7ED] flex flex-col items-center justify-center shadow-2xl overflow-hidden">
         
         <div className="flex flex-col items-center gap-4">
-          <h1 className="text-5xl font-normal italic text-[#EBA388] tracking-tight font-[family-name:var(--font-lemon)] overflow-hidden">
+          <h1 className="text-5xl font-normal text-[#EBA388] tracking-tight font-[family-name:var(--font-lemon)]">
               honnori
           </h1>
-          {/* このspanで今文字隠している状態になってるよ！ */}
-          <span className="absolute inset-0 bg-[#FFF7ED] animate-reveal-left"></span>
-          {/* 
-          これjsにやればなめらかに文字浮き出てくるはず
-          module.exports = {
-            theme: {
-              extend: {
-                keyframes: {
-                  'reveal-left': {
-                  '0%': { transform: 'translateX(0%)' },
-                  '100%': { transform: 'translateX(100%)' },
-                },
-              },
-              animation: {
-              // 2秒かけて滑らかに右へ消える
-              'reveal-left': 'reveal-left 2s ease-in-out forwards',
-              },
-            },
-          },
-          } */}
+          <div 
+            className="absolute inset-0 bg-[#FFF7ED] animate-reveal" 
+            style={{ width: '105%' }} // 文字が確実に見えるよう少し広め
+          />
         </div>
         
       </div>
