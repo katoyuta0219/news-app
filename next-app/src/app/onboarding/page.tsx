@@ -22,21 +22,6 @@ export default function OnboardingPage() {
         <Suspense fallback={<Loading />}>
             <div className="flex flex-col min-h-screen items-center justify-center">
                 <div className="w-full max-w-md">
-                    <div className="mb-6 text-center">
-                        <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
-                            ステップ {step} / 3
-                        </p>
-                        <div className="mt-2 flex gap-2 justify-center">
-                            {[1, 2, 3].map((i) => (
-                                <div
-                                    key={i}
-                                    className={`h-2 w-8 rounded-full transition-colors ${
-                                        i <= step ? 'bg-blue-600' : 'bg-gray-300 dark:bg-gray-700'
-                                    }`}
-                                />
-                            ))}
-                        </div>
-                    </div>
 
                     {step === 1 && <Onboarding1 onNext={nextStep} />}
                     {step === 2 && <Onboarding2 onNext={nextStep} onBack={prevStep} />}
