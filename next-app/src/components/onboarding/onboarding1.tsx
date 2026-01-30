@@ -7,7 +7,7 @@ type Props = {
 export default function Onboarding1({ onNext }: Props) {
     return (
        <div className="flex justify-center min-h-screen bg-[#FFF9F3]">
-            <div className="w-full max-w-[393px] min-h-screen flex flex-col items-center px-8 py-12 relative shadow-sm">
+            <div className="w-[393px] h-[852px] flex flex-col items-center px-8 py-12 relative shadow-sm">
                 
                 <div className="w-full flex justify-between items-center mb-12">
                     <div className="w-10"></div>
