@@ -8,7 +8,7 @@ type Props = {
 export default function Onboarding2({ onNext, onBack }: Props) {
     return (
         <div className="flex justify-center min-h-screen bg-[#FFF9F3] font-[family-name:var(--font-zen-maru)]">
-            <div className="w-full max-w-[393px] min-h-screen flex flex-col items-center px-8 py-12 relative">
+            <div className="w-[393px] h-[852px] flex flex-col items-center px-8 py-12 relative">
             {/* バックボタン（仮） */}
                 <div className="w-full flex justify-between items-center mb-12">
                     <button onClick={onBack} className="w-10 text-gray-400 text-2xl">
@@ -22,7 +22,7 @@ export default function Onboarding2({ onNext, onBack }: Props) {
                     </button>
                 </div>
 
-                <div className="text-center mb-8">
+                <div className="text-center mb-2">
                     <h2 className="text-[26px] font-black text-gray-800 leading-tight mb-4 font-[family-name:var(--font-zen-maru)]">
                         AIが、<br />
                         あなたの心を守ります。
@@ -30,18 +30,17 @@ export default function Onboarding2({ onNext, onBack }: Props) {
                 </div>
 
                 {/* フィルタリングのイラストエリア（仮） */}
-                <div className="flex-1 flex items-center justify-center w-full mb-8">
-                    <div className="relative w-full max-w-[280px] aspect-square flex flex-col items-center justify-center">
-                        {/* 画像を配置 */}
+                <div className="relative w-72 h-72 mb-10 flex items-center justify-center">
+                    <div className="text-8xl">
                         <img
                             src="/filter.png"
                             alt="filter"
-                            className=""
+                            className="w-full h-full object-contain"
                          />
                     </div>
                 </div>
 
-                <div className="text-center mb-10">
+                <div className="text-center mb-2">
                     <p className="text-sm font-medium text-gray-600 leading-relaxed px-4 font-[family-name:var(--font-zen-maru)]">
                         3段階の徹底したフィルタリングで、<br />
                         ストレスになる言葉をブロック。<br />

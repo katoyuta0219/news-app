@@ -7,7 +7,7 @@ type Props = {
 export default function Onboarding1({ onNext }: Props) {
     return (
        <div className="flex justify-center min-h-screen bg-[#FFF9F3]">
-            <div className="w-full max-w-[393px] min-h-screen flex flex-col items-center px-8 py-12 relative shadow-sm">
+            <div className="w-[393px] h-[852px] flex flex-col items-center px-8 py-12 relative shadow-sm">
                 
                 <div className="w-full flex justify-between items-center mb-12">
                     <div className="w-10"></div>
@@ -33,9 +33,15 @@ export default function Onboarding1({ onNext }: Props) {
                 </div>
 
                 <div className="relative w-72 h-72 mb-16 flex items-center justify-center">
-                    <div className="text-8xl">🌍</div>
+                    <div className="text-8xl">
+                        <img
+                            src="/famicons_earth-sharp.png"
+                            alt="Heart group illustration" 
+                            className="w-full h-full object-contain"
+                        />
+                    </div>
                     {/* ハートとかの装飾 */}
-                    <div className="absolute inset-0 rounded-full animate-[spin_20s_linear_infinite]">
+                    <div className="absolute inset-0 rounded-full"> {/* animate-[spin_20s_linear_infinite] */}
                         <img
                             src="/heart_group.png"
                             alt="Heart group illustration" 

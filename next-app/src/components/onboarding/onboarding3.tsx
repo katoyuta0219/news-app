@@ -8,7 +8,7 @@ type Props = {
 export default function Onboarding3({ onFinish, onBack }: Props) {
     return (
         <div className="flex justify-center min-h-screen bg-[#FFF9F3] font-[family-name:var(--font-zen-maru)]">
-            <div className="w-full max-w-[393px] min-h-screen flex flex-col items-center px-8 py-12 relative">
+            <div className="w-[393px] h-[852px] flex flex-col items-center px-8 py-12 relative">
                 <div className="w-full flex justify-between items-center mb-12">
                     <button onClick={onBack} className="w-10 text-gray-400 text-2xl">
                         {/* バックボタン(仮) */}
@@ -17,11 +17,12 @@ export default function Onboarding3({ onFinish, onBack }: Props) {
                     <h1 className="text-4xl text-[#EBA388] font-[family-name:var(--font-lemon)]">
                         honnori
                     </h1>
-                    {/* 右側のバランス用スペース */}
-                    <div className="w-8"></div> 
+                    <button className="text-gray-500 text-sm font-medium">
+                        スキップ
+                    </button>
                 </div>
 
-                <div className="text-center mb-8">
+                <div className="text-center mb-2">
                     <h2 className="text-[26px] font-black text-gray-800 leading-tight mb-4 font-[family-name:var(--font-zen-maru)]">
                         近くの「いいこと」<br />
                         を見つけにいこう。
@@ -29,20 +30,17 @@ export default function Onboarding3({ onFinish, onBack }: Props) {
                 </div>
 
                 {/* マップイラストエリア（仮） */}
-                <div className="flex-1 flex items-center justify-center w-full mb-8">
-                    <div className="relative w-full max-w-[300px] aspect-square flex flex-col items-center justify-center">
-                        {/* マップ画像を配置する予定 */}
-                        <div className="w-full h-full rounded-2xl flex items-center justify-center overflow-hidden">
-                            <img
-                                src="/map.png"
-                                alt='onbording_map'
-                                className=""
-                            />
-                        </div>
+                <div className="relative w-72 h-72 mb-16 flex items-center justify-center">
+                    <div className="text-8xl">
+                        <img
+                            src="/map.png"
+                            alt='onbording_map'
+                            className="w-full h-full object-contain"
+                        />
                     </div>
                 </div>
 
-                <div className="text-center mb-10">
+                <div className="text-center mb-16">
                     <p className="text-sm font-medium text-gray-600 leading-relaxed px-4 font-[family-name:var(--font-zen-maru)]">
                         街に隠れた素敵なお店や、<br />
                         心温まるニュースを地図でチェック。<br />
