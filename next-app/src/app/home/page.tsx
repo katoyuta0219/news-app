@@ -29,13 +29,13 @@ export default function HomePage() {
     }
 
     return (
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen bg-[#FFF9F1]">
 
             <main className="flex-1 p-4">
-                <div className="flex items-center justify-between mb-6">
-                    <h1 className="text-2xl font-bold">ニュース</h1>
+                <div className="flex items-center justify-center mb-6 h-[47px]">
+                    <h1 className="text-[32px] font-lemon text-[#F3A683]">honnori</h1>
                 </div>
-
+            
                 <div className="flex items-center gap-4 mb-6">
                     <CategorySelector
                         category={formData.category}
@@ -44,9 +44,18 @@ export default function HomePage() {
 
                     <button 
                         onClick={() => setSheetOpen(true)}
-                        className="px-4 py-2 bg-gray-200 dark:bg-gray-800 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
+                        className="
+                            px-[10px] py-[10px]
+                            ml-[20px]
+                            text-[12px]
+                            bg-[#ffffff]
+                            text-[#000000]
+                            border border-[#FFE9DC]
+                            rounded-[24px]
+                            transition
+                        "
                     >
-                        絞り込み
+                        絞り込み <span className='pl-[10px]'>&#x21C4;</span>
                     </button>
                 </div>
 

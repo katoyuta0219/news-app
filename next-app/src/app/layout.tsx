@@ -1,6 +1,17 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Zen_Maru_Gothic, Lemon } from 'next/font/google';
+
+const zenMaru = Zen_Maru_Gothic({
+  weight: ['400', '500', '700'],
+  subsets: ['latin'],
+});
+
+const lemon = Lemon({
+  weight: '400',
+  subsets: ['latin'],
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,10 +36,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${zenMaru.className} antialiased`}
       >
         {children}
       </body>
     </html>
   );
 }
+
+
