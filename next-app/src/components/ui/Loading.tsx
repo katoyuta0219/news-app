@@ -1,14 +1,32 @@
+
 export default function Loading() {
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="flex flex-col items-center gap-4">
-        <div className="relative w-12 h-12">
-          <div className="absolute inset-0 border-4 border-gray-200 dark:border-gray-700 rounded-full"></div>
-          <div className="absolute inset-0 border-4 border-transparent border-t-blue-600 rounded-full animate-spin"></div>
+    // 外枠：画面全体の背景色と中央寄せ
+    <div className="flex items-center h-full justify-center min-h-screen bg-[#FFF7ED] overflow-hidden relative"> 
+
+    <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes reveal-right {
+          0% { transform: translateX(0%); }
+          100% { transform: translateX(101%); }
+        }
+        .animate-reveal {
+          animation: reveal-right 2.5s ease-in-out forwards;
+        }
+      `}} />
+      
+      {/* メイン：幅を393pxに固定 */}
+      <div className="w-[393px] h-screen bg-[#FFF7ED] flex flex-col items-center justify-center shadow-2xl overflow-hidden">
+        
+        <div className="flex flex-col items-center gap-4">
+          <h1 className="text-5xl font-normal text-[#EBA388] tracking-tight font-[family-name:var(--font-lemon)]">
+              honnori
+          </h1>
+          <div 
+            className="absolute inset-0 bg-[#FFF7ED] animate-reveal" 
+            style={{ width: '105%' }} // 文字が確実に見えるよう少し広め
+          />
         </div>
-        <p className="text-sm text-gray-600 dark:text-gray-400">
-          読み込み中...
-        </p>
+        
       </div>
     </div>
   );
