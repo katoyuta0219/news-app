@@ -1,19 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Zen_Maru_Gothic, Lemon } from "next/font/google";
 import "./globals.css";
-import { Zen_Maru_Gothic, Lemon } from 'next/font/google';
-
-const zenMaru = Zen_Maru_Gothic({
-  weight: ['400', '500', '700'],
-  subsets: ['latin'],
-});
-
-const lemon = Lemon({
-  weight: '400',
-  subsets: ['latin'],
-});
-//ロゴfont　{lemon}
-import { Zen_Maru_Gothic,Lemon } from 'next/font/google';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,15 +12,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-
-//font-lemon
 const lemon = Lemon({
   weight: '400',
   subsets: ['latin'],
   variable: '--font-lemon',
 });
 
-//Zen_Maru_Gothic
 const zenMaruGothic = Zen_Maru_Gothic({
   weight: ["400", "500", "700", "900"],
   subsets: ["latin"],

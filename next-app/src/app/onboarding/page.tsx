@@ -15,18 +15,15 @@ export default function OnboardingPage() {
     const prevStep = () => setStep((s) => Math.max(s - 1, 1));
 
     const finish = () => {
-        router.push('/account');
+        router.push('/account'); // Onboarding ends -> Go to Account Registration
     };
 
     return (
         <Suspense fallback={<Loading />}>
-            <div className="flex flex-col min-h-screen items-center justify-center">
-                <div className="w-full max-w-md">
-
-                    {step === 1 && <Onboarding1 onNext={nextStep} />}
-                    {step === 2 && <Onboarding2 onNext={nextStep} onBack={prevStep} />}
-                    {step === 3 && <Onboarding3 onFinish={finish} onBack={prevStep} />}
-                </div>
+            <div className="h-full overflow-hidden">
+                {step === 1 && <Onboarding1 onNext={nextStep} />}
+                {step === 2 && <Onboarding2 onNext={nextStep} onBack={prevStep} />}
+                {step === 3 && <Onboarding3 onFinish={finish} onBack={prevStep} />}
             </div>
         </Suspense>
     );

@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function Footer() {
     const [activeTab, setActiveTab] = useState("home");
     return (
-        <footer>
+        <footer className="fixed bottom-0 left-0 right-0 bg-transparent z-50">
             <nav className="relative">
                 <svg
                     className="absolute bottom-0 left-1/2 -translate-x-1/2 z-0"
@@ -18,15 +18,15 @@ export default function Footer() {
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                 >
-                    <ellipse cx="66.5" cy="50" rx="80" ry="50" fill="#5EA754"/>
-                    <ellipse cx="196.5" cy="50" rx="80" ry="50" fill="#5EA754"/>
-                    <ellipse cx="326.5" cy="50" rx="80" ry="50" fill="#5EA754"/>
-                    <ellipse cx="68.5" cy="64" rx="79.5" ry="59" fill="#5CCB21"/>
-                    <ellipse cx="197" cy="64" rx="79" ry="59" fill="#5CCB21"/>
-                    <ellipse cx="325" cy="64" rx="79" ry="59" fill="#5CCB21"/>
-                    <ellipse cx="68.5" cy="69" rx="79.5" ry="59" fill="#5EA754"/>
-                    <ellipse cx="197" cy="69" rx="79" ry="59" fill="#5EA754"/>
-                    <ellipse cx="325" cy="69" rx="79" ry="59" fill="#5EA754"/>
+                    <ellipse cx="66.5" cy="50" rx="80" ry="50" fill="#5EA754" />
+                    <ellipse cx="196.5" cy="50" rx="80" ry="50" fill="#5EA754" />
+                    <ellipse cx="326.5" cy="50" rx="80" ry="50" fill="#5EA754" />
+                    <ellipse cx="68.5" cy="64" rx="79.5" ry="59" fill="#5CCB21" />
+                    <ellipse cx="197" cy="64" rx="79" ry="59" fill="#5CCB21" />
+                    <ellipse cx="325" cy="64" rx="79" ry="59" fill="#5CCB21" />
+                    <ellipse cx="68.5" cy="69" rx="79.5" ry="59" fill="#5EA754" />
+                    <ellipse cx="197" cy="69" rx="79" ry="59" fill="#5EA754" />
+                    <ellipse cx="325" cy="69" rx="79" ry="59" fill="#5EA754" />
                 </svg>
                 <ul className="relative flex justify-around text-[#ffffff] text-[16px]">
                     <li>
@@ -103,7 +103,7 @@ export default function Footer() {
                             <span>プロフ</span>
                         </Link>
                     </li>
-                </ul> 
+                </ul>
             </nav>
         </footer>
     );

@@ -1,5 +1,7 @@
 'use client';
 
+import { Home } from 'lucide-react';
+
 interface Props {
     position: string;
     onChange: (position: string) => void;
@@ -7,19 +9,37 @@ interface Props {
 
 export default function PositionSelector({ position, onChange }: Props) {
     return (
-        <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" htmlFor="position">
+        <div className="space-y-2">
+            <label className="block text-sm font-bold text-black" htmlFor="position">
+                立場
             </label>
-            <input
-                type="text"
-                id="position"
-                name="position"
-                value={position}
-                onChange={(e) => onChange(e.target.value)}
-                required
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-zinc-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="立場"
-            />
+            <div className="relative">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-black pointer-events-none">
+                    <Home size={20} />
+                </div>
+
+                <input
+                    type="text"
+                    id="position"
+                    value={position}
+                    onChange={(e) => onChange(e.target.value)}
+                    required
+                    placeholder="例：学生"
+                    className="
+                        w-full
+                        h-[50px]
+                        pl-12 pr-4
+                        bg-white
+                        border border-[#F3A683]
+                        rounded-[24px]
+                        text-black
+                        placeholder-gray-400
+                        focus:outline-none
+                        focus:ring-2
+                        focus:ring-[#F3A683]
+                    "
+                />
+            </div>
         </div>
     );
 }

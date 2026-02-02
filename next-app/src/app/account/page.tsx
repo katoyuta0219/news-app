@@ -7,6 +7,7 @@ import GenreSelector from '@/components/account/genres';
 import LocationSelector from '@/components/account/location';
 import AgeSelector from '@/components/account/age';
 import PositionSelector from '@/components/account/position';
+import { Smile } from 'lucide-react';
 
 interface RegistrationFormData {
     age: string;
@@ -62,61 +63,77 @@ export default function AccountPage() {
     }
 
     return (
-        <div className="flex min-h-screen bg-gray-50 dark:bg-black">
-            <main className="w-full max-w-2xl mx-auto py-8 px-4">
-                <h1 className="text-3xl font-bold mb-8 text-gray-900 dark:text-gray-100">
-                    アカウント登録
+        <div className="flex flex-col h-full bg-[#FFF9F1] overflow-hidden">
+            <main className="w-full max-w-md mx-auto py-8 px-6 flex flex-col items-center overflow-y-auto">
+                {/* Header/Logo Style */}
+                <h1 className="text-[40px] font-lemon text-[#F3A683] mb-4">
+                    Account
                 </h1>
+                <p className="text-[#7A7A7A] text-sm mb-8">
+                    アカウント登録
+                </p>
 
                 {successMessage && (
-                    <div className="mb-6 p-4 bg-green-100 dark:bg-green-900 border border-green-400 dark:border-green-700 text-green-700 dark:text-green-100 rounded-lg">
+                    <div className="w-full mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-[24px]">
                         {successMessage}
                     </div>
                 )}
 
                 {errorMessage && (
-                    <div className="mb-6 p-4 bg-red-100 dark:bg-red-900 border border-red-400 dark:border-red-700 text-red-700 dark:text-red-100 rounded-lg">
+                    <div className="w-full mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-[24px]">
                         {errorMessage}
                     </div>
                 )}
 
-                <form onSubmit={handleSubmit} className="bg-white dark:bg-zinc-900 rounded-lg shadow-md p-8">
-                    <div className="space-y-6">
-                        <LocationSelector
-                            location={formData.location}
-                            onChange={(location) =>
-                                setFormData((prev) => ({ ...prev, location }))
-                            }
-                        />
+                <form onSubmit={handleSubmit} className="w-full space-y-4">
+                    <LocationSelector
+                        location={formData.location}
+                        onChange={(location) =>
+                            setFormData((prev) => ({ ...prev, location }))
+                        }
+                    />
 
-                        <AgeSelector
-                            age={formData.age}
-                            onChange={(age) =>
-                                setFormData((prev) => ({ ...prev, age }))
-                            }
-                        />
+                    <AgeSelector
+                        age={formData.age}
+                        onChange={(age) =>
+                            setFormData((prev) => ({ ...prev, age }))
+                        }
+                    />
 
-                        <PositionSelector
-                            position={formData.position}
-                            onChange={(position) =>
-                                setFormData((prev) => ({ ...prev, position }))
-                            }
-                        />
+                    <PositionSelector
+                        position={formData.position}
+                        onChange={(position) =>
+                            setFormData((prev) => ({ ...prev, position }))
+                        }
+                    />
 
-                        <GenreSelector
-                            selectedGenres={formData.genres}
-                            onChange={(genres) =>
-                                setFormData((prev) => ({ ...prev, genres }))
-                            }
-                        />
-                    </div>
+                    <GenreSelector
+                        selectedGenres={formData.genres}
+                        onChange={(genres) =>
+                            setFormData((prev) => ({ ...prev, genres }))
+                        }
+                    />
 
                     <div className="mt-8">
                         <button
                             type="submit"
                             disabled={!isFormValid || isSubmitting}
-                            className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="
+                                w-full
+                                py-4
+                                bg-white
+                                text-black
+                                font-bold
+                                rounded-[30px]
+                                shadow-md
+                                hover:bg-[#FFF9F1]
+                                transition
+                                disabled:opacity-50
+                                disabled:cursor-not-allowed
+                                flex items-center justify-center gap-2
+                            "
                         >
+                            <Smile size={20} className="text-[#F3A683]" />
                             {isSubmitting ? '登録中...' : 'はじめる'}
                         </button>
                     </div>

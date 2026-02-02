@@ -8,8 +8,8 @@ export default function MapPage() {
     const [isLoading, setIsLoading] = useState(false);
 
     return (
-        <div className="flex flex-col min-h-screen">            
-            <main className="flex-1 pb-20">
+        <div className="flex flex-col h-full overflow-hidden">            
+            <main className="flex-1 pb-24 overflow-y-auto">
                 {isLoading && <div className="text-center mt-4">読み込み中...</div>}
                 <MapView />
             </main>

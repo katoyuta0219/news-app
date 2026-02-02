@@ -7,8 +7,7 @@ type Props = {
 
 export default function Onboarding2({ onNext, onBack }: Props) {
     return (
-        <div className="flex justify-center min-h-screen bg-[#FFF9F3] font-[family-name:var(--font-zen-maru)]">
-            <div className="w-[393px] h-[852px] flex flex-col items-center px-8 py-12 relative">
+            <div className="h-full flex flex-col items-center px-8 py-12 relative bg-[#FFF9F3] font-[family-name:var(--font-zen-maru)]">
             {/* バックボタン（仮） */}
                 <div className="w-full flex justify-between items-center mb-12">
                     <button onClick={onBack} className="w-10 text-gray-400 text-2xl">
@@ -65,6 +64,5 @@ export default function Onboarding2({ onNext, onBack }: Props) {
                     </button>
                 </div>
             </div>
-        </div>
     );
 }

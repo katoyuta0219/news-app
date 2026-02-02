@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #FFFFFF;
   --foreground: #171717;
 }
 
@@ -14,8 +14,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0A0A0A;
+    --foreground: #EDEDED;
   }
 }
 
@@ -27,4 +27,30 @@ body {
 
 .font-lemon {
   font-family: 'Lemon', cursive;
+}
+
+.dashed-line {
+  width: 300px;
+  height: 1px;
+  margin: 0 auto;
+  background-image: repeating-linear-gradient(to right,
+      rgba(243, 166, 131, 0.5),
+      rgba(243, 166, 131, 0.5) 5px,
+      transparent 5px,
+      transparent 10px);
+}
+
+
+
+.genre-bg {
+  background-image: url('/genre-bg.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.label-text {
+  display: inline-block;
+  width: 200px;
+  white-space: nowrap;
 }

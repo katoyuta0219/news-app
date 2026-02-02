@@ -24,10 +24,9 @@ export default function Page() {
   }, [router]);
 
   return (
-    <main className="flex flex-col items-center justify-center h-screen">
+    <main className="flex flex-col items-center justify-center h-full">
       <Loading />
       <p className="mt-4">
-        {countdown}秒後にオンボーディングページへ移行します
       </p>
     </main>
   );

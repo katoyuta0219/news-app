@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Loading from '@/components/ui/Loading';
-import Header from '@/components/layout/Header';
 import Footer from "@/components/layout/footer";
 import GenreSelector from '@/components/account/genres';
 import LocationSelector from '@/components/account/location';
@@ -76,12 +75,11 @@ export default function ProfilePage() {
     }
 
     return (
-        <div className="flex flex-col min-h-screen bg-gray-50 dark:bg-black">
-            <Header />
+        <div className="flex flex-col h-full bg-[#FFF9F1] overflow-hidden">
 
-            <main className="flex-1 w-full max-w-2xl mx-auto py-8 px-4">
-                <h1 className="text-3xl font-bold mb-8 text-gray-900 dark:text-gray-100">
-                    プロフィール編集
+            <main className="flex-1 w-full max-w-2xl mx-auto px-4 pb-24 overflow-y-auto">
+                <h1 className="h-[20%] flex items-center justify-center text-[32px] font-lemon text-[#F3A683]">
+                    profile
                 </h1>
 
                 {successMessage && (
@@ -96,8 +94,11 @@ export default function ProfilePage() {
                     </div>
                 )}
 
-                <form onSubmit={handleSubmit} className="bg-white dark:bg-zinc-900 rounded-lg shadow-md p-8">
-                    <div className="space-y-6">
+                <form
+                    onSubmit={handleSubmit}
+                    className="bg-[#FFF9F1] p-8"
+                >
+                    <div className="space-y-3">
                         <LocationSelector
                             location={formData.location}
                             onChange={(location) =>
@@ -131,11 +132,25 @@ export default function ProfilePage() {
                         <button
                             type="submit"
                             disabled={!isFormValid || isSubmitting}
-                            className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="
+      w-full
+      px-6 py-3
+      bg-[#F3A683]/50   /* 背景だけ50% */
+      text-black       /* 文字は100% */
+      rounded-[50px]
+      transition
+      hover:bg-[#F3A683]/60
+      font-medium
+      disabled:bg-[#F3A683]/30
+      disabled:cursor-not-allowed
+    "
                         >
-                            {isSubmitting ? '保存中...' : '保存'}
+                            {isSubmitting ? '保存中...' : 'けってい'}
                         </button>
                     </div>
+
+
+
                 </form>
             </main>
 

@@ -1,5 +1,7 @@
 'use client';
 
+import { Home, Cloud, ChevronRight } from 'lucide-react';
+
 type Props = {
     selectedGenres: string[];
     onChange: (genres: string[]) => void;
@@ -9,7 +11,9 @@ const GENRES = [
     '動物',
     'グルメ・カフェ',
     'エンタメ',
-    'カフェ'
+    'あそび',
+    'ショッピング',
+    '自然'
 ];
 
 export default function GenreSelector({ selectedGenres, onChange }: Props) {
@@ -22,11 +26,12 @@ export default function GenreSelector({ selectedGenres, onChange }: Props) {
     };
 
     return (
-        <div className="space-y-2">
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                好きなジャンル（複数選択可）
-            </label>
-            <div className="flex flex-wrap gap-2">
+        <div className="rounded-[24px] border border-[#F3A683] bg-white p-6 relative mt-6">
+            <h3 className="text-sm font-bold text-black mb-4">
+                好きなジャンル
+            </h3>
+
+            <div className="flex flex-wrap gap-3 items-center">
                 {GENRES.map((genre) => {
                     const isSelected = selectedGenres.includes(genre);
                     return (
@@ -34,21 +39,31 @@ export default function GenreSelector({ selectedGenres, onChange }: Props) {
                             key={genre}
                             type="button"
                             onClick={() => toggleGenre(genre)}
-                            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${isSelected
-                                ? 'bg-blue-600 text-white'
-                                : 'bg-gray-200 text-gray-700 dark:bg-zinc-800 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-zinc-700'
-                                }`}
+                            className={`
+                                relative
+                                px-4 py-2
+                                rounded-[50px] /* Cloud shapes? rounded-full is safest fallback */
+                                text-sm font-medium
+                                transition
+                                border
+                                flex items-center gap-1
+                                ${isSelected
+                                    ? 'bg-[#F3A683]/20 border-[#F3A683] text-[#D2977C]'
+                                    : 'bg-white border-gray-100 text-gray-600 shadow-sm'
+                                }
+                            `}
                         >
+                            {/* Dummy cloud icon or shape? */}
+                            <Home size={14} className={isSelected ? 'text-[#D2977C]' : 'text-gray-400'} />
                             {genre}
                         </button>
                     );
                 })}
-            </div>
-            {selectedGenres.length > 0 && (
-                <div className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                    選択中: {selectedGenres.join(', ')}
+                {/* Arrow as visual cue? */}
+                <div className="ml-auto">
+                    <ChevronRight size={20} className="text-black" />
                 </div>
-            )}
+            </div>
         </div>
     );
 }

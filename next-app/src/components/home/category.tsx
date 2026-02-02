@@ -2,8 +2,8 @@
 import { useState } from "react";
 // import FilterSheet from "./FilterSheet"; // Removed as parent handles it
 
-type Category = "すべて" | "生活に近い" | "はっけん"; // Or string if dynamic, but keeping for now
-const categories: Category[] = ["すべて", "生活に近い", "はっけん"];
+type Category = "全て" | "カフェ" | "動物" | "おでかけ" | "今週の話題";
+const categories: Category[] = ["全て", "カフェ", "動物", "おでかけ", "今週の話題"];
 
 interface Props {
     category: string;
@@ -29,8 +29,8 @@ export default function CategorySelector({ category, onChange }: Props) {
                                 onClick={() => onChange(c)}
                                 className={`rounded-[24px] border text-[12px] transition
                   ${active
-                    ? "text-[#000000] bg-[#ffffff] border-[#FFE9DC]"
-                    : "text-[#000000] bg-[#ffffff] border-[#FFE9DC]"
+                                        ? "text-[#000000] bg-[#ffffff] border-[#FFE9DC]"
+                                        : "text-[#000000] bg-[#ffffff] border-[#FFE9DC]"
                                     }
                                     px-[10px] py-[10px]
                 `}

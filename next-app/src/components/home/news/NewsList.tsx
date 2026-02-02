@@ -9,43 +9,38 @@ interface News {
   description: string;
   category: string;
   date: string;
+  imageUrl: string;
 }
 
 interface NewsListProps {
   category?: string;
+  filters?: {
+    keyword: string;
+    tags: string[];
+    ratio: number;
+  };
 }
 
-export default function NewsList({ category = '全て' }: NewsListProps) {
+export default function NewsList({ category = '全て', filters }: NewsListProps) {
   const [newsList, setNewsList] = useState<News[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-
-  // 追加しましたby駿牙
   const getIconByName = (name: string): LucideIcon => {
     switch (name) {
-      case 'カフェ':
-        return Coffee;
-      case '動物':
-        return PawPrint;
-      case 'ランチ':
-        return Utensils;
-      default:
-        return Star; // デフォルトのアイコン
+      case 'カフェ': return Coffee;
+      case '動物': return PawPrint;
+      case 'ランチ': return Utensils;
+      default: return Star;
     }
   };
 
-  // 【追加】アイコンの色を決定する関数
   const getIconColorByName = (name: string): string => {
     switch (name) {
-      case 'カフェ':
-        return "#D2977C"; // 落ち着いた茶色
-      case '動物':
-        return "#F3A683"; // 優しいオレンジ（ご提示の色）
-      case 'ランチ':
-        return "#EBA388"; // コーラル系（Loadingで使っていた色）
-      default:
-        return "#D2977C";
+      case 'カフェ': return "#D2977C";
+      case '動物': return "#F3A683";
+      case 'ランチ': return "#EBA388";
+      default: return "#D2977C";
     }
   };
 
@@ -53,31 +48,27 @@ export default function NewsList({ category = '全て' }: NewsListProps) {
     const fetchNews = async () => {
       try {
         setIsLoading(true);
-        // API呼び出し例（実装時に更新）
-        // const response = await fetch(`/api/news?category=${category}`);
-        // const data = await response.json();
-        
-        // ダミーデータ
-        const dummyNews: News[] = [
-          {
-            id: '1',
-            name: 'カフェ',
-            location: '名古屋駅から徒歩10分',
-            description: '名古屋駅に、新しくスタバができました。',
-            category: '名古屋駅 x カフェ',
-            date: new Date().toISOString(),
-          },
-          {
-            id: '2',
-            name: '動物',
-            location:'名古屋駅から徒歩10分',
-            description: 'サモエドカフェができました。',
-            category: '動物 x カフェ',
-            date: new Date().toISOString(),
-          },
-        ];
+        // Build Params
+        const params = new URLSearchParams();
+        params.append('category', category);
 
-        setNewsList(dummyNews);
+        if (filters) {
+          if (filters.keyword) params.append('keyword', filters.keyword);
+          filters.tags.forEach(tag => params.append('tags', tag));
+          // params.append('ratio', String(filters.ratio)); // Not using ratio for query yet 
+        }
+
+        const response = await fetch(`/api/news?${params.toString()}`);
+        if (!response.ok) throw new Error('Failed to fetch');
+        const data = await response.json();
+
+        const formattedNews = data.news.map((item: any) => ({
+          ...item,
+          id: String(item.id),
+          date: item.createdAt || new Date().toISOString()
+        }));
+
+        setNewsList(formattedNews);
       } catch (err) {
         setError('ニュースの読み込みに失敗しました');
         console.error(err);
@@ -87,10 +78,10 @@ export default function NewsList({ category = '全て' }: NewsListProps) {
     };
 
     fetchNews();
-  }, [category]);
+  }, [category, filters]); // Re-fetch when category or filters change
 
   if (isLoading) {
-    return <div className="text-center py-8">読み込み中...</div>;
+    return <div className="text-center py-8 text-black">読み込み中...</div>;
   }
 
   if (error) {
@@ -111,6 +102,7 @@ export default function NewsList({ category = '全て' }: NewsListProps) {
           name={news.name}
           description={news.description}
           category={news.category}
+          imageUrl={news.imageUrl}
           Icon={getIconByName(news.name)}
           iconColor={getIconColorByName(news.name)}
         />
